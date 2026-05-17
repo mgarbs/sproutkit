@@ -18,12 +18,16 @@ import { fileURLToPath } from 'node:url';
 
 import {
   PlantSchema,
+  PlaybookSchema,
   ProductSchema,
   type Plant,
+  type Playbook,
   type Product,
 } from '@sproutkit/schema';
 import { parse as parseYaml } from 'yaml';
 import type { ZodTypeAny } from 'zod';
+
+import type { PlaybookIndex } from './tools/get-playbook.js';
 
 export type PlantIndex = {
   bySlug: Map<string, Plant>;
@@ -34,6 +38,7 @@ export type PlantIndex = {
 export type SproutkitDataset = {
   plants: PlantIndex;
   products: Product[];
+  playbooks: PlaybookIndex;
   dataRoot: string;
 };
 
@@ -137,8 +142,44 @@ async function loadProducts(productsDir: string): Promise<Product[]> {
   return out;
 }
 
+async function loadPlaybooks(
+  playbooksDir: string,
+  knownProductSlugs: Set<string>,
+  knownPlantSlugs: Set<string>,
+): Promise<PlaybookIndex> {
+  const yamls = await listYamls(playbooksDir);
+  const bySlug = new Map<string, Playbook>();
+  const all: Playbook[] = [];
+  for (const file of yamls) {
+    const pb = await parseAndValidate<Playbook>(join(playbooksDir, file), PlaybookSchema);
+    if (bySlug.has(pb.slug)) {
+      throw new Error(`${file}: duplicate playbook slug "${pb.slug}"`);
+    }
+    // Fail loud on broken cross-references — the validator catches this in CI
+    // too, but a runtime check protects against partial / unsynced datasets.
+    for (const slug of pb.recommended_products) {
+      if (!knownProductSlugs.has(slug)) {
+        throw new Error(`${file}: recommended_products references unknown product "${slug}"`);
+      }
+    }
+    for (const slug of pb.related_plant_slugs) {
+      if (!knownPlantSlugs.has(slug)) {
+        throw new Error(`${file}: related_plant_slugs references unknown plant "${slug}"`);
+      }
+    }
+    bySlug.set(pb.slug, pb);
+    all.push(pb);
+  }
+  return { bySlug, all };
+}
+
 export async function loadDataset(dataRoot: string): Promise<SproutkitDataset> {
   const plants = await loadPlants(join(dataRoot, 'plants'));
   const products = await loadProducts(join(dataRoot, 'products'));
-  return { plants, products, dataRoot };
+  const playbooks = await loadPlaybooks(
+    join(dataRoot, 'playbooks'),
+    new Set(products.map((p) => p.slug)),
+    new Set(plants.all.map((p) => p.slug)),
+  );
+  return { plants, products, playbooks, dataRoot };
 }

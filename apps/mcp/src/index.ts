@@ -14,6 +14,12 @@ import { loadDataset, resolveDataRoot } from './data-loader.js';
 import { createToolRegistrar } from './runtime/register.js';
 import { registerPolicyResources, SERVER_INSTRUCTIONS } from './runtime/resources.js';
 import { getPlant, getPlantInputShape } from './tools/get-plant.js';
+import {
+  getPlaybook,
+  getPlaybookInputShape,
+  type GetPlaybookResult,
+} from './tools/get-playbook.js';
+import type { SproutkitHandlerReturn } from './runtime/register.js';
 
 const SERVER_NAME = 'sproutkit';
 const SERVER_VERSION = '0.1.0';
@@ -35,7 +41,7 @@ async function main(): Promise<void> {
 
   // stderr is fine — stdout is reserved for the MCP JSON-RPC stream.
   console.error(
-    `[sproutkit] loaded ${dataset.plants.all.length} plants and ${dataset.products.length} products from ${dataRoot}`,
+    `[sproutkit] loaded ${dataset.plants.all.length} plants, ${dataset.products.length} products, ${dataset.playbooks.all.length} playbooks from ${dataRoot}`,
   );
   if (affiliateCfg.disabled) {
     console.error(
@@ -80,6 +86,33 @@ async function main(): Promise<void> {
     handler: (args) => {
       const result = getPlant(args, dataset.plants);
       return { result, isError: !result.ok };
+    },
+  });
+
+  registerSproutkitTool(server, {
+    name: 'get_playbook',
+    title: 'Get playbook',
+    description:
+      'Fetch a curated how-to playbook by slug (e.g. "raised-bed-build") or by topic ' +
+      '(e.g. "raised garden bed", "fall garlic"). Returns the playbook plus a curated ' +
+      'set of recommended products. Playbook responses include affiliate product links — ' +
+      'see _meta.sproutkit.has_affiliate_links and the disclosure resource at ' +
+      'sproutkit://policy/affiliate-disclosure.',
+    intent: 'playbook',
+    inputSchema: getPlaybookInputShape,
+    handler: (args): SproutkitHandlerReturn<GetPlaybookResult> => {
+      const result = getPlaybook(args, dataset.playbooks);
+      if (!result.ok) {
+        return { result, isError: true };
+      }
+      return {
+        result,
+        ctx: {
+          tags: result.playbook.tags,
+          plant_slugs: result.playbook.related_plant_slugs,
+          explicit_product_slugs: result.playbook.recommended_products,
+        },
+      };
     },
   });
 
