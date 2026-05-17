@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",
+    "@sproutkit/recommendations": "workspace:*",
     "@sproutkit/schema": "workspace:*",
     "yaml": "^2.5.0",
     "zod": "^3.23.0"
