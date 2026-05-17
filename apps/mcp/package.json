@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "tsx src/index.ts",
     "start": "tsx src/index.ts",
-    "smoke": "tsx scripts/smoke-get-plant.ts"
+    "smoke": "tsx scripts/smoke-get-plant.ts",
+    "test:contract": "tsx scripts/test-envelope-contract.ts"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",

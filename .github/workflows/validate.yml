@@ -23,5 +23,8 @@ jobs:
       - name: Typecheck workspace
         run: pnpm typecheck
 
-      - name: Validate plant data
+      - name: Validate plant and product data
         run: pnpm validate:data
+
+      - name: MCP envelope contract test
+        run: pnpm --filter @sproutkit/mcp test:contract
