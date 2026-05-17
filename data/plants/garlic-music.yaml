@@ -1,0 +1,37 @@
+slug: garlic-music
+common_names:
+  - Music garlic
+  - Music hardneck garlic
+scientific_name: Allium sativum var. ophioscorodon 'Music'
+category: vegetable
+lifecycle: perennial
+climate:
+  usda_zones: [3, 4, 5, 6, 7, 8]
+  frost_tolerance: hard
+sun: full
+water: medium
+soil:
+  ph: [6.0, 7.0]
+  drainage: well
+spacing_cm: 15
+days_to_maturity: [240, 270]
+sowing:
+  direct_sow: true
+  indoors_weeks_before_last_frost: 0
+companions:
+  good: [tomato, pepper, lettuce, beet]
+  bad: [bean, pea]
+common_issues:
+  - white rot (Stromatinia cepivora) — persists in soil for years
+  - onion thrips on emerging leaves
+  - missed scape removal reduces bulb size on hardnecks
+  - splitting bulbs from late harvest or excess moisture
+sources:
+  - kind: extension
+    title: Growing garlic in home gardens
+    publisher: University of Minnesota Extension
+    url: https://extension.umn.edu/vegetables/growing-garlic
+  - kind: extension
+    title: Garlic Production
+    publisher: Penn State Extension
+    url: https://extension.psu.edu/garlic-production

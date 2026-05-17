@@ -1,0 +1,38 @@
+slug: basil-genovese
+common_names:
+  - Genovese basil
+  - sweet basil
+scientific_name: Ocimum basilicum 'Genovese'
+category: herb
+lifecycle: annual
+climate:
+  usda_zones: [4, 5, 6, 7, 8, 9, 10, 11]
+  frost_tolerance: none
+sun: full
+water: medium
+soil:
+  ph: [6.0, 7.5]
+  drainage: well
+spacing_cm: 25
+days_to_maturity: [60, 75]
+sowing:
+  indoors_weeks_before_last_frost: 6
+  direct_sow: true
+  transplant_after_last_frost_weeks: 2
+companions:
+  good: [tomato, pepper]
+  bad: [rue]
+common_issues:
+  - downy mildew (Peronospora belbahrii)
+  - fusarium wilt
+  - cold damage below ~10°C (50°F)
+  - flowering reduces leaf flavor — pinch flower spikes
+sources:
+  - kind: extension
+    title: Growing basil in home gardens
+    publisher: University of Minnesota Extension
+    url: https://extension.umn.edu/vegetables/growing-basil
+  - kind: extension
+    title: Basil — Home & Garden Information Center
+    publisher: Clemson Cooperative Extension
+    url: https://hgic.clemson.edu/factsheet/basil/

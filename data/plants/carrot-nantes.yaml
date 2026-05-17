@@ -1,0 +1,37 @@
+slug: carrot-nantes
+common_names:
+  - Nantes carrot
+  - Scarlet Nantes
+scientific_name: Daucus carota subsp. sativus 'Nantes'
+category: vegetable
+lifecycle: biennial
+climate:
+  usda_zones: [3, 4, 5, 6, 7, 8, 9, 10]
+  frost_tolerance: light
+sun: full
+water: medium
+soil:
+  ph: [6.0, 6.8]
+  drainage: well
+spacing_cm: 5
+days_to_maturity: [65, 75]
+sowing:
+  direct_sow: true
+  indoors_weeks_before_last_frost: 0
+companions:
+  good: [onion, leek, lettuce, rosemary]
+  bad: [dill]
+common_issues:
+  - carrot rust fly (Psila rosae)
+  - forking from rocky or compacted soil
+  - green shoulders from sun-exposed crowns
+  - poor germination in crusted soil
+sources:
+  - kind: extension
+    title: Growing carrots in home gardens
+    publisher: University of Minnesota Extension
+    url: https://extension.umn.edu/vegetables/growing-carrots
+  - kind: extension
+    title: Carrot, Beet, Radish & Other Root Crops
+    publisher: Clemson Cooperative Extension
+    url: https://hgic.clemson.edu/factsheet/carrot-beet-radish-other-root-crops/

@@ -1,0 +1,40 @@
+slug: kale-lacinato
+common_names:
+  - Lacinato kale
+  - dinosaur kale
+  - Tuscan kale
+  - Nero di Toscana
+scientific_name: Brassica oleracea var. sabellica 'Lacinato'
+category: vegetable
+lifecycle: biennial
+climate:
+  usda_zones: [3, 4, 5, 6, 7, 8, 9, 10]
+  frost_tolerance: hard
+sun: full
+water: medium
+soil:
+  ph: [6.0, 7.5]
+  drainage: well
+spacing_cm: 45
+days_to_maturity: [55, 65]
+sowing:
+  direct_sow: true
+  indoors_weeks_before_last_frost: 6
+  transplant_after_last_frost_weeks: -2
+companions:
+  good: [onion, beet, celery, dill]
+  bad: [tomato, strawberry]
+common_issues:
+  - cabbage worms (imported cabbageworm, cabbage looper)
+  - aphids on undersides of leaves
+  - flea beetles on young plants
+  - clubroot (Plasmodiophora brassicae) in acidic soils
+sources:
+  - kind: extension
+    title: Growing kale in home gardens
+    publisher: University of Minnesota Extension
+    url: https://extension.umn.edu/vegetables/growing-kale
+  - kind: extension
+    title: Cabbage, Broccoli & Other Cole Crops
+    publisher: Clemson Cooperative Extension
+    url: https://hgic.clemson.edu/factsheet/cabbage-broccoli-other-cole-crops/

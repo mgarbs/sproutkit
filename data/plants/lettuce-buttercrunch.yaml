@@ -1,0 +1,38 @@
+slug: lettuce-buttercrunch
+common_names:
+  - Buttercrunch lettuce
+  - Buttercrunch
+scientific_name: Lactuca sativa 'Buttercrunch'
+category: vegetable
+lifecycle: annual
+climate:
+  usda_zones: [3, 4, 5, 6, 7, 8, 9, 10, 11]
+  frost_tolerance: light
+sun: partial
+water: medium
+soil:
+  ph: [6.0, 7.0]
+  drainage: well
+spacing_cm: 20
+days_to_maturity: [50, 65]
+sowing:
+  direct_sow: true
+  indoors_weeks_before_last_frost: 4
+  transplant_after_last_frost_weeks: -2
+companions:
+  good: [carrot, radish, strawberry, chive]
+  bad: [broccoli]
+common_issues:
+  - bolting in heat (>24°C / 75°F sustained)
+  - slug and snail damage on tender leaves
+  - tipburn from calcium deficiency under fast growth
+  - downy mildew (Bremia lactucae)
+sources:
+  - kind: extension
+    title: Growing lettuce in home gardens
+    publisher: University of Minnesota Extension
+    url: https://extension.umn.edu/vegetables/growing-lettuce
+  - kind: extension
+    title: Lettuce — Home & Garden Information Center
+    publisher: Clemson Cooperative Extension
+    url: https://hgic.clemson.edu/factsheet/lettuce/

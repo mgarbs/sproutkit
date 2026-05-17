@@ -1,0 +1,38 @@
+slug: cucumber-marketmore
+common_names:
+  - Marketmore 76 cucumber
+  - Marketmore
+scientific_name: Cucumis sativus 'Marketmore 76'
+category: vegetable
+lifecycle: annual
+climate:
+  usda_zones: [4, 5, 6, 7, 8, 9, 10, 11]
+  frost_tolerance: none
+sun: full
+water: high
+soil:
+  ph: [6.0, 7.0]
+  drainage: well
+spacing_cm: 45
+days_to_maturity: [58, 68]
+sowing:
+  direct_sow: true
+  indoors_weeks_before_last_frost: 3
+  transplant_after_last_frost_weeks: 2
+companions:
+  good: [bean, corn, radish, nasturtium]
+  bad: [sage, potato]
+common_issues:
+  - cucumber beetles (striped and spotted) vector bacterial wilt
+  - powdery mildew late in season
+  - bitter fruit from heat or water stress
+  - poor pollination causing misshapen fruit
+sources:
+  - kind: extension
+    title: Growing cucumbers in home gardens
+    publisher: University of Minnesota Extension
+    url: https://extension.umn.edu/vegetables/growing-cucumbers
+  - kind: extension
+    title: Cucumber, Squash, Melon & Other Cucurbits
+    publisher: Clemson Cooperative Extension
+    url: https://hgic.clemson.edu/factsheet/cucumber-squash-melon-other-cucurbits/

@@ -1,0 +1,38 @@
+slug: bean-bush-blue-lake
+common_names:
+  - Blue Lake bush bean
+  - Blue Lake 274
+scientific_name: Phaseolus vulgaris 'Blue Lake Bush'
+category: vegetable
+lifecycle: annual
+climate:
+  usda_zones: [3, 4, 5, 6, 7, 8, 9, 10, 11]
+  frost_tolerance: none
+sun: full
+water: medium
+soil:
+  ph: [6.0, 7.0]
+  drainage: well
+spacing_cm: 10
+days_to_maturity: [55, 60]
+sowing:
+  direct_sow: true
+  indoors_weeks_before_last_frost: 0
+  transplant_after_last_frost_weeks: 1
+companions:
+  good: [cucumber, corn, carrot, strawberry]
+  bad: [onion, garlic, leek]
+common_issues:
+  - Mexican bean beetle defoliation
+  - bacterial blights (halo blight, common blight)
+  - poor germination in cold wet soil (<16°C / 60°F)
+  - bean rust (Uromyces appendiculatus) in humid weather
+sources:
+  - kind: extension
+    title: Growing beans in home gardens
+    publisher: University of Minnesota Extension
+    url: https://extension.umn.edu/vegetables/growing-beans
+  - kind: extension
+    title: Bean — Home & Garden Information Center
+    publisher: Clemson Cooperative Extension
+    url: https://hgic.clemson.edu/factsheet/bean/
