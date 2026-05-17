@@ -16,3 +16,13 @@ export {
   type Product,
   type ProductCategory,
 } from './product.js';
+export {
+  PlaybookCategorySchema,
+  PlaybookDifficultySchema,
+  PlaybookSchema,
+  PlaybookStepSchema,
+  type Playbook,
+  type PlaybookCategory,
+  type PlaybookDifficulty,
+  type PlaybookStep,
+} from './playbook.js';
