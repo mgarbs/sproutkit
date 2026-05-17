@@ -51,9 +51,25 @@ Add this block to `claude_desktop_config.json` (path is `~/Library/Application S
 
 Restart Claude Desktop after editing the file. Once connected you can ask things like *"use sproutkit to look up brandywine tomato"* and the model will call `get_plant`.
 
+### Configuring affiliate recommendations (self-hosters)
+
+SproutKit's MCP server can surface affiliate product recommendations when the answering tool's intent implies a purchase. Recommendations are off until you configure at least one affiliate tag:
+
+| Env var | Network | Where to get a tag |
+|---|---|---|
+| `SPROUTKIT_AMAZON_TAG` | Amazon Associates | https://affiliate-program.amazon.com — your tracking ID, e.g. `yourname-20` |
+| `SPROUTKIT_TRUELEAF_TAG` | True Leaf Market | https://www.trueleafmarket.com/pages/affiliate-program |
+| `SPROUTKIT_DISABLE_RECOMMENDATIONS` | (kill switch) | Set to `1` to disable all affiliate output regardless of other config |
+
+The server reads these once at startup. If a network is unconfigured, products that depend solely on that network are skipped silently. If no network is configured, the server logs a WARN and disables recommendations entirely — every response carries `_meta.sproutkit.has_affiliate_links: false`.
+
+**The dataset never contains a real tag.** Product YAMLs use the `{tag}` placeholder in their `url_template`, and the validator rejects any literal tag string. This is what makes the catalog forkable: anyone running their own SproutKit gets the same products with their own affiliate IDs substituted.
+
+For the full disclosure policy see the MCP resource at `sproutkit://policy/affiliate-disclosure`, exposed by the server itself.
+
 ### Pointing at a different dataset
 
-Override the data directory with the `SPROUTKIT_DATA_DIR` environment variable — useful for forks that want to add their own plant entries without modifying the main `data/plants/` tree.
+Override with `SPROUTKIT_DATA_ROOT` (preferred) pointing at a directory containing `plants/` and `products/` subdirs. `SPROUTKIT_DATA_DIR` is still honored for back-compat — if it points directly at a `plants/` directory, the server uses its parent as the root.
 
 ```json
 {
@@ -63,7 +79,9 @@ Override the data directory with the `SPROUTKIT_DATA_DIR` environment variable �
       "args": ["--filter", "@sproutkit/mcp", "dev"],
       "cwd": "/absolute/path/to/sproutkit",
       "env": {
-        "SPROUTKIT_DATA_DIR": "/absolute/path/to/my-plants"
+        "SPROUTKIT_AMAZON_TAG": "yourname-20",
+        "SPROUTKIT_TRUELEAF_TAG": "yourname",
+        "SPROUTKIT_DATA_ROOT": "/absolute/path/to/my-data"
       }
     }
   }
@@ -75,11 +93,16 @@ Override the data directory with the `SPROUTKIT_DATA_DIR` environment variable �
 ```
 apps/mcp/
 ├─ src/
-│  ├─ index.ts               server bootstrap, stdio transport, tool registry
-│  ├─ data-loader.ts         walks SPROUTKIT_DATA_DIR (default: ../../data/plants),
-│  │                         validates every YAML, fails loudly on bad data
+│  ├─ index.ts               server bootstrap, stdio transport, tool + resource registry
+│  ├─ data-loader.ts         walks <SPROUTKIT_DATA_ROOT>/{plants,products}/*.yaml,
+│  │                         validates every entry, fails loudly on bad data
+│  ├─ runtime/
+│  │  ├─ envelope.ts         SDK-native envelope (content + structuredContent + _meta)
+│  │  ├─ register.ts         registerSproutkitTool — systemic chokepoint every tool uses
+│  │  └─ resources.ts        sproutkit://policy/affiliate-disclosure + server instructions
 │  └─ tools/
 │     └─ get-plant.ts        slug/name lookup + Levenshtein candidates on miss
 └─ scripts/
-   └─ smoke-get-plant.ts     end-to-end MCP client/server smoke test
+   ├─ smoke-get-plant.ts     end-to-end MCP client/server smoke test
+   └─ test-envelope-contract.ts  asserts every registered tool conforms to envelope shape
 ```
