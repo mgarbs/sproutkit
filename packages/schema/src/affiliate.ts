@@ -43,7 +43,21 @@ export type AffiliateConfig = {
   unconfiguredNetworks: AffiliateNetwork[];
 };
 
-export function loadAffiliateConfig(env: NodeJS.ProcessEnv = process.env): AffiliateConfig {
+export type AffiliateDefaults = Partial<Record<AffiliateNetwork, string>>;
+
+/**
+ * @param env       Process env (defaulted to process.env).
+ * @param defaults  Per-deployment fallback tags applied when the env var is
+ *                  unset. Lets the deployment bootstrap supply a canonical
+ *                  default without baking it into the schema package itself.
+ *                  Forks override by passing their own defaults.
+ *                  SPROUTKIT_DISABLE_RECOMMENDATIONS=1 still wins over
+ *                  defaults — the kill switch is absolute.
+ */
+export function loadAffiliateConfig(
+  env: NodeJS.ProcessEnv = process.env,
+  defaults: AffiliateDefaults = {},
+): AffiliateConfig {
   if (env.SPROUTKIT_DISABLE_RECOMMENDATIONS === '1') {
     return {
       tags: {},
@@ -59,7 +73,8 @@ export function loadAffiliateConfig(env: NodeJS.ProcessEnv = process.env): Affil
 
   for (const network of AffiliateNetworkSchema.options) {
     const envKey = NETWORK_ENV_VARS[network];
-    const value = env[envKey];
+    const envValue = env[envKey];
+    const value = envValue && envValue.length > 0 ? envValue : defaults[network];
     if (value && value.length > 0) {
       tags[network] = value;
       configured.push(network);

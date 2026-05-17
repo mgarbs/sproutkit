@@ -53,15 +53,17 @@ Restart Claude Desktop after editing the file. Once connected you can ask things
 
 ### Configuring affiliate recommendations (self-hosters)
 
-SproutKit's MCP server can surface affiliate product recommendations when the answering tool's intent implies a purchase. Recommendations are off until you configure at least one affiliate tag:
+SproutKit's MCP server surfaces affiliate product recommendations when the answering tool's intent implies a purchase. Tag configuration:
 
-| Env var | Network | Where to get a tag |
-|---|---|---|
-| `SPROUTKIT_AMAZON_TAG` | Amazon Associates | https://affiliate-program.amazon.com — your tracking ID, e.g. `yourname-20` |
-| `SPROUTKIT_TRUELEAF_TAG` | True Leaf Market | https://www.trueleafmarket.com/pages/affiliate-program |
-| `SPROUTKIT_DISABLE_RECOMMENDATIONS` | (kill switch) | Set to `1` to disable all affiliate output regardless of other config |
+| Env var | Network | Default | Where to get a tag |
+|---|---|---|---|
+| `SPROUTKIT_AMAZON_TAG` | Amazon Associates | `sproutkit-20` (canonical project tag) | https://affiliate-program.amazon.com — your tracking ID, e.g. `yourname-20` |
+| `SPROUTKIT_TRUELEAF_TAG` | True Leaf Market | *(none — unset = skipped)* | https://www.trueleafmarket.com/pages/affiliate-program |
+| `SPROUTKIT_DISABLE_RECOMMENDATIONS` | (kill switch) | unset | Set to `1` to disable all affiliate output regardless of other config |
 
-The server reads these once at startup. If a network is unconfigured, products that depend solely on that network are skipped silently. If no network is configured, the server logs a WARN and disables recommendations entirely — every response carries `_meta.sproutkit.has_affiliate_links: false`.
+The server reads these once at startup. The canonical Amazon default ensures the SproutKit project's hosted deployment "just works" without env-var setup; **forks running their own deployment should set `SPROUTKIT_AMAZON_TAG` (and `SPROUTKIT_TRUELEAF_TAG`) to their own Associates IDs**, otherwise commissions accrue to the upstream project. The kill switch always wins.
+
+If a network is unconfigured, products that depend solely on it are skipped silently.
 
 **The dataset never contains a real tag.** Product YAMLs use the `{tag}` placeholder in their `url_template`, and the validator rejects any literal tag string. This is what makes the catalog forkable: anyone running their own SproutKit gets the same products with their own affiliate IDs substituted.
 

@@ -18,10 +18,20 @@ import { getPlant, getPlantInputShape } from './tools/get-plant.js';
 const SERVER_NAME = 'sproutkit';
 const SERVER_VERSION = '0.1.0';
 
+/**
+ * Canonical SproutKit deployment defaults. Used when the corresponding env
+ * var is unset. SPROUTKIT_DISABLE_RECOMMENDATIONS=1 still overrides these.
+ * Forks should replace this object in their own bootstrap with their own
+ * affiliate tags — that's the one and only knob to turn.
+ */
+const SPROUTKIT_AFFILIATE_DEFAULTS = {
+  amazon: 'sproutkit-20',
+} as const;
+
 async function main(): Promise<void> {
   const dataRoot = await resolveDataRoot();
   const dataset = await loadDataset(dataRoot);
-  const affiliateCfg = loadAffiliateConfig();
+  const affiliateCfg = loadAffiliateConfig(process.env, SPROUTKIT_AFFILIATE_DEFAULTS);
 
   // stderr is fine — stdout is reserved for the MCP JSON-RPC stream.
   console.error(
@@ -29,13 +39,17 @@ async function main(): Promise<void> {
   );
   if (affiliateCfg.disabled) {
     console.error(
-      '[sproutkit] WARN: no affiliate tags configured; recommendations disabled. ' +
-        'Set SPROUTKIT_AMAZON_TAG and/or SPROUTKIT_TRUELEAF_TAG to enable.',
+      '[sproutkit] recommendations disabled (SPROUTKIT_DISABLE_RECOMMENDATIONS=1)',
     );
-  } else if (affiliateCfg.unconfiguredNetworks.length > 0) {
+  } else {
     console.error(
-      `[sproutkit] note: unconfigured networks will be skipped: ${affiliateCfg.unconfiguredNetworks.join(', ')}`,
+      `[sproutkit] affiliate networks active: ${affiliateCfg.configuredNetworks.join(', ')}`,
     );
+    if (affiliateCfg.unconfiguredNetworks.length > 0) {
+      console.error(
+        `[sproutkit] note: unconfigured networks will be skipped: ${affiliateCfg.unconfiguredNetworks.join(', ')}`,
+      );
+    }
   }
 
   const server = new McpServer(
