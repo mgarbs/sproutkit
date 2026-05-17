@@ -1,0 +1,38 @@
+slug: drip-irrigation-setup
+title: Set Up Drip Irrigation for Vegetable Beds
+topic: drip irrigation setup
+category: build
+difficulty: intermediate
+time_estimate: 2-3 hours for a small garden
+tags: [drip-irrigation, raised-bed, in-ground, container, mulch]
+steps:
+  - heading: Map the zone and parts
+    body: |
+      Sketch each bed, container group, and hose route before cutting tubing. Keep one faucet zone under the flow rating of the kit by adding up emitter gallons per hour. At the faucet, install a timer if used, a backflow preventer, a 150 to 200 mesh filter, and a pressure regulator matched to the tubing. Use about 10 psi for thin drip tape and about 25 to 30 psi for most drip tubing unless the kit label specifies otherwise.
+  - heading: Install the header line
+    body: |
+      Run 1/2 inch poly header tubing along the head of the beds or across the short end of a raised bed. Secure it every 3 ft with landscape staples and keep it out of walking paths. Punch takeoff holes squarely with the kit punch so barbed fittings seal tightly. Put a removable cap, figure-8 fitting, or flush valve at the far end so the header can be rinsed.
+  - heading: Lay laterals at crop spacing
+    body: |
+      Use 8 to 12 inch emitter spacing for most vegetable beds. In a 4 ft wide raised bed, run four drip lines lengthwise about 10 to 12 inches apart for dense crops, or two lines about 12 inches from the sides for tomatoes, peppers, and cucumbers. Keep emitters 2 to 4 inches from seed rows or transplant stems so young roots find the wetting zone. Pin laterals every 18 to 24 inches and cap each line after it is flushed.
+  - heading: Flush and schedule watering
+    body: |
+      Before closing the line ends, run water for 1 to 2 minutes until debris clears. Run the completed zone for 30 minutes and dig a small check hole to confirm moisture is reaching 4 to 6 inches deep. For common 0.5 gallon per minute per 100 ft drip tape, mature summer vegetables may need a 2 to 3 hour run during hot dry periods. Start with shorter runs, such as 45 to 60 minutes two or three times per week, and adjust by soil moisture rather than a fixed calendar.
+  - heading: Winterize before hard freeze
+    body: |
+      Before the first hard freeze, disconnect the timer, filter, pressure regulator, and backflow preventer and store them indoors. Open all line ends and let the system drain by gravity, lifting low spots where water collects. If the manufacturer allows compressed air, blow out lines at low pressure and stay below the tubing pressure rating. Leave ends capped after drying so insects and soil do not enter before spring startup.
+recommended_products: [drip-irrigation-starter-kit]
+related_plant_slugs: [tomato-brandywine, pepper-jalapeno, cucumber-marketmore, kale-lacinato, bean-bush-blue-lake]
+sources:
+  - kind: extension
+    title: "Landscape Irrigation Equipment Part 5: Filters and Pressure Regulators"
+    publisher: Clemson Cooperative Extension Home & Garden Information Center
+    url: https://hgic.clemson.edu/factsheet/landscape-irrigation-equipment-part-5-filters-pressure-regulators/
+  - kind: extension
+    title: Vegetable Equipment and Irrigation
+    publisher: University of Maryland Extension
+    url: https://extension.umd.edu/resource/vegetable-equipment-and-irrigation/
+  - kind: extension
+    title: Drip Irrigation in the Home Vegetable Garden
+    publisher: University of Georgia Cooperative Extension
+    url: https://fieldreport.caes.uga.edu/publications/C1095/drip-irrigation-in-the-home-vegetable-garden/

@@ -1,0 +1,34 @@
+slug: raised-bed-build
+title: Build a 4x8 Cedar Raised Garden Bed
+topic: raised garden bed
+category: build
+difficulty: beginner
+time_estimate: 3-5 hours
+tags: [raised-bed, in-ground, drip-irrigation, compost, mulch]
+steps:
+  - heading: Choose a sunny, reachable site
+    body: |
+      Set the 4 ft by 8 ft bed where vegetables will receive at least 6 hours of direct sun, with 8 hours better for tomatoes and peppers. Leave 24 to 36 inches of path on all sides and keep the bed within 25 ft of a spigot or hose route. Mark the rectangle with stakes and string, then check that both diagonals are about 107 inches so the frame starts square.
+  - heading: Level and block weeds
+    body: |
+      Remove sod or scalp it as low as possible, then level the footprint so opposite corners are within 1 inch of each other. Lay plain cardboard or 5 or more sheets of newspaper over the footprint, overlapping seams by 6 inches and wetting the barrier before filling. Avoid solid plastic under the bed because roots need drainage into the soil below; use 1/4 inch hardware cloth only if burrowing pests are a known problem.
+  - heading: Assemble and square the cedar frame
+    body: |
+      Assemble the cedar 4x8 kit on the marked outline and keep the long boards straight while fastening corners. Confirm the inside width is about 48 inches and the inside length is about 96 inches before tightening brackets or driving corner stakes. Recheck level along each side and shim low corners with soil so irrigation water will not pool at one end.
+  - heading: Fill with a stable soil mix
+    body: |
+      An 11 inch deep 4x8 bed needs about 32 cubic feet, or 1.2 cubic yards, of fill. Blend about 24 cubic feet screened topsoil, 6 cubic feet finished compost, and 2 cubic feet leaf mold or aged pine fines before loading the bed. Rake the surface flat and stop filling 1 inch below the rim so mulch and irrigation water stay inside. After settling, top up with another 1/2 to 1 inch of compost rather than walking in the bed.
+  - heading: Install drip before planting
+    body: |
+      Lay two 1/2 inch drip laterals lengthwise, each about 12 inches in from the cedar side, for wide-spaced crops. For intensive greens or root crops, use four lines spaced about 12 inches apart across the 48 inch bed. Connect the lines to a filtered, pressure-regulated header, pin tubing every 18 to 24 inches, and flush the open ends for 1 minute. After planting, cover exposed soil with 1 to 2 inches of straw, shredded leaves, or finished compost mulch.
+recommended_products: [raised-bed-cedar-4x8, drip-irrigation-starter-kit]
+related_plant_slugs: [tomato-brandywine, lettuce-buttercrunch, carrot-nantes, kale-lacinato]
+sources:
+  - kind: extension
+    title: Building Raised Beds for Vegetable Gardening
+    publisher: University of Maryland Extension
+    url: https://extension.umd.edu/resource/building-raised-beds-vegetable-gardening/
+  - kind: extension
+    title: Raised Beds
+    publisher: Clemson Cooperative Extension Home & Garden Information Center
+    url: https://hgic.clemson.edu/factsheet/raised-beds/
