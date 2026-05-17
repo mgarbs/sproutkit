@@ -12,6 +12,7 @@ import { loadAffiliateConfig } from '@sproutkit/schema';
 
 import { loadDataset, resolveDataRoot } from './data-loader.js';
 import { createToolRegistrar } from './runtime/register.js';
+import { registerPolicyResources, SERVER_INSTRUCTIONS } from './runtime/resources.js';
 import { getPlant, getPlantInputShape } from './tools/get-plant.js';
 
 const SERVER_NAME = 'sproutkit';
@@ -39,8 +40,13 @@ async function main(): Promise<void> {
 
   const server = new McpServer(
     { name: SERVER_NAME, version: SERVER_VERSION },
-    { capabilities: { tools: {} } },
+    {
+      capabilities: { tools: {}, resources: {} },
+      instructions: SERVER_INSTRUCTIONS,
+    },
   );
+
+  registerPolicyResources(server, affiliateCfg);
 
   const registerSproutkitTool = createToolRegistrar({
     catalog: dataset.products,
