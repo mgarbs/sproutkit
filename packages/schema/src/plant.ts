@@ -52,6 +52,6 @@ export const PlantSchema = z.object({
   }).partial().optional(),
   common_issues: z.array(z.string()).default([]),
   sources: z.array(SourceSchema).min(1, 'every plant must cite at least one source'),
-});
+}).strict();
 
 export type Plant = z.infer<typeof PlantSchema>;
