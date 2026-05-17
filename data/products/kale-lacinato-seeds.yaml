@@ -1,0 +1,29 @@
+slug: kale-lacinato-seeds
+name: Lacinato (dinosaur) kale seeds
+category: seed
+tags:
+  - kale
+  - brassica
+  - leafy-green
+  - cool-season
+  - frost-hardy
+  - overwintering
+  - fall-planting
+notes: |
+  Lacinato / Nero di Toscana — narrow blistered leaves, sweetened by frost,
+  hardy through light winter. Direct sow or transplant; succession-plant for
+  continuous harvest. Replace SKU with a verified True Leaf Market product
+  slug.
+affiliate_targets:
+  - network: true-leaf-market
+    sku: TLM-TBD-KALE-LACINATO
+    url_template: https://www.trueleafmarket.com/products/TLM-TBD-KALE-LACINATO?aff={tag}
+sources:
+  - kind: extension
+    title: Growing kale in home gardens
+    publisher: University of Minnesota Extension
+    url: https://extension.umn.edu/vegetables/growing-kale
+  - kind: extension
+    title: Cabbage, Broccoli & Other Cole Crops
+    publisher: Clemson Cooperative Extension
+    url: https://hgic.clemson.edu/factsheet/cabbage-broccoli-other-cole-crops/

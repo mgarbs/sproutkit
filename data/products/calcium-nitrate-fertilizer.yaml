@@ -1,0 +1,30 @@
+slug: calcium-nitrate-fertilizer
+name: Calcium nitrate fertilizer (15.5-0-0 + 19% Ca)
+category: amendment
+tags:
+  - calcium-deficiency
+  - tomato
+  - pepper
+  - solanaceae
+  - fertilizer
+  - soil-amendment
+notes: |
+  Water-soluble calcium nitrate provides both nitrogen and calcium in a form
+  plants can take up quickly — useful for foliar feeding when blossom end rot
+  symptoms appear and root uptake is the limiting factor. Note: blossom end
+  rot is most often a water-uptake problem, not a soil-calcium deficiency, so
+  pair this with even watering. Replace ASIN with a verified product before
+  going live.
+affiliate_targets:
+  - network: amazon
+    sku: ASIN-TBD-CALCIUM-NITRATE
+    url_template: https://www.amazon.com/dp/ASIN-TBD-CALCIUM-NITRATE?tag={tag}
+sources:
+  - kind: extension
+    title: Blossom end rot of tomato, pepper, and eggplant
+    publisher: University of Maryland Extension
+    url: https://extension.umd.edu/resource/blossom-end-rot-tomato-pepper-eggplant
+  - kind: extension
+    title: Blossom-end rot
+    publisher: University of Minnesota Extension
+    url: https://extension.umn.edu/disease-management/blossom-end-rot

@@ -1,0 +1,27 @@
+slug: garlic-music-bulbs
+name: Music hardneck garlic seed bulbs (fall-planting)
+category: seed
+tags:
+  - garlic
+  - allium
+  - fall-planting
+  - overwintering
+  - frost-hardy
+notes: |
+  Hardneck garlic for fall planting (4-6 weeks before ground freeze in cold
+  zones). Music is a Porcelain-type — large cloves (4-7 per bulb), strong
+  flavor, stores 6-9 months. Plant in well-drained soil with 4-6 inches of
+  mulch. Replace SKU with a verified True Leaf Market product slug.
+affiliate_targets:
+  - network: true-leaf-market
+    sku: TLM-TBD-GARLIC-MUSIC
+    url_template: https://www.trueleafmarket.com/products/TLM-TBD-GARLIC-MUSIC?aff={tag}
+sources:
+  - kind: extension
+    title: Growing garlic in home gardens
+    publisher: University of Minnesota Extension
+    url: https://extension.umn.edu/vegetables/growing-garlic
+  - kind: extension
+    title: Garlic Production
+    publisher: Penn State Extension
+    url: https://extension.psu.edu/garlic-production

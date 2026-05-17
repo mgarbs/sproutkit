@@ -1,0 +1,26 @@
+slug: raised-bed-cedar-4x8
+name: Cedar raised garden bed (4'×8'×11")
+category: hardware
+tags:
+  - raised-bed
+  - in-ground
+  - container
+notes: |
+  Cedar resists rot 8-15 years without chemical treatment. 4'×8' is the
+  canonical size — 4' wide so a gardener can reach the middle from either
+  side without stepping in. 11"+ depth supports root crops and avoids the
+  shallow-bed limitations of pre-cut "low" beds. Replace ASIN with a
+  verified product before going live.
+affiliate_targets:
+  - network: amazon
+    sku: ASIN-TBD-CEDAR-BED-4X8
+    url_template: https://www.amazon.com/dp/ASIN-TBD-CEDAR-BED-4X8?tag={tag}
+sources:
+  - kind: extension
+    title: Raised bed gardens
+    publisher: University of Minnesota Extension
+    url: https://extension.umn.edu/planting-and-growing-guides/raised-bed-gardens
+  - kind: extension
+    title: Raised bed gardening
+    publisher: Oregon State University Extension
+    url: https://extension.oregonstate.edu/gardening/techniques/raised-bed-gardening

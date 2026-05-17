@@ -1,0 +1,25 @@
+slug: drip-irrigation-starter-kit
+name: Drip irrigation starter kit (raised bed)
+category: irrigation
+tags:
+  - drip-irrigation
+  - raised-bed
+  - container
+  - warm-season
+notes: |
+  Generic category placeholder. Replace ASIN with a verified, currently-stocked
+  starter kit covering ~2 raised beds. Look for kits that include pressure
+  regulator + filter (omitting these is the #1 reason home drip systems clog).
+affiliate_targets:
+  - network: amazon
+    sku: ASIN-TBD-DRIP-KIT
+    url_template: https://www.amazon.com/dp/ASIN-TBD-DRIP-KIT?tag={tag}
+sources:
+  - kind: extension
+    title: Drip irrigation for home gardens
+    publisher: Colorado State University Extension
+    url: https://extension.colostate.edu/topic-areas/yard-garden/drip-irrigation-for-home-gardens-4-702/
+  - kind: extension
+    title: Efficient irrigation in the home garden
+    publisher: University of Minnesota Extension
+    url: https://extension.umn.edu/efficient-watering/efficient-irrigation-home-garden

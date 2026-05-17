@@ -1,0 +1,27 @@
+slug: basil-genovese-seeds
+name: Genovese basil seeds (sweet basil)
+category: seed
+tags:
+  - basil
+  - herb
+  - lamiaceae
+  - warm-season
+  - frost-tender
+  - seed-starting
+notes: |
+  Classic Italian sweet basil — the standard for pesto and tomato pairings.
+  Cold-sensitive, so direct-sow only after soil ≥16°C / 60°F. Replace SKU
+  with a verified True Leaf Market product slug.
+affiliate_targets:
+  - network: true-leaf-market
+    sku: TLM-TBD-BASIL-GENOVESE
+    url_template: https://www.trueleafmarket.com/products/TLM-TBD-BASIL-GENOVESE?aff={tag}
+sources:
+  - kind: extension
+    title: Growing basil in home gardens
+    publisher: University of Minnesota Extension
+    url: https://extension.umn.edu/vegetables/growing-basil
+  - kind: extension
+    title: Basil — Home & Garden Information Center
+    publisher: Clemson Cooperative Extension
+    url: https://hgic.clemson.edu/factsheet/basil/

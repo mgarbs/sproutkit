@@ -1,0 +1,28 @@
+slug: tomato-brandywine-seeds
+name: Brandywine tomato seeds (heirloom, indeterminate)
+category: seed
+tags:
+  - tomato
+  - solanaceae
+  - warm-season
+  - frost-tender
+  - seed-starting
+  - transplant
+notes: |
+  Heirloom indeterminate Brandywine — large pink beefsteak fruit, 78-90 days
+  to maturity, requires staking/caging. Pair with the matching plant entry
+  data/plants/tomato-brandywine.yaml. Replace SKU with a verified True Leaf
+  Market product slug.
+affiliate_targets:
+  - network: true-leaf-market
+    sku: TLM-TBD-TOMATO-BRANDYWINE
+    url_template: https://www.trueleafmarket.com/products/TLM-TBD-TOMATO-BRANDYWINE?aff={tag}
+sources:
+  - kind: extension
+    title: Growing tomatoes in home gardens
+    publisher: University of Minnesota Extension
+    url: https://extension.umn.edu/vegetables/growing-tomatoes
+  - kind: extension
+    title: Selecting tomato varieties
+    publisher: Penn State Extension
+    url: https://extension.psu.edu/tomato-varieties

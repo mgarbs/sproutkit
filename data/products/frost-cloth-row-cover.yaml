@@ -1,0 +1,29 @@
+slug: frost-cloth-row-cover
+name: Floating row cover / frost cloth (medium weight, ~0.55 oz)
+category: cover
+tags:
+  - frost-tender
+  - frost-hardy
+  - overwintering
+  - cold-frame
+  - fall-planting
+  - spring-planting
+notes: |
+  Medium-weight spunbond polypropylene (~0.55 oz/yd², ~28 g/m²) offers ~4-8°F
+  of frost protection and ~70-85% light transmission — the right balance for
+  fall season extension. Heavier weights protect more but cost light; lighter
+  weights are insect-barrier only. Replace ASIN with a verified product before
+  going live.
+affiliate_targets:
+  - network: amazon
+    sku: ASIN-TBD-ROW-COVER
+    url_template: https://www.amazon.com/dp/ASIN-TBD-ROW-COVER?tag={tag}
+sources:
+  - kind: extension
+    title: Using row covers in vegetable gardens
+    publisher: University of Minnesota Extension
+    url: https://extension.umn.edu/managing-soil-and-nutrients/row-covers
+  - kind: extension
+    title: Season extension with row covers and low tunnels
+    publisher: Penn State Extension
+    url: https://extension.psu.edu/season-extension-using-row-covers-and-low-tunnels
