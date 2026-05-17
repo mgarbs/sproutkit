@@ -1,14 +1,17 @@
 # @sproutkit/mcp
 
-The AI-facing surface of SproutKit. A Model Context Protocol server that loads the curated plant dataset from `data/plants/` and exposes it to MCP clients (Claude Desktop, `mcp-cli`, custom clients) over stdio JSON-RPC.
+The AI-facing surface of SproutKit. A Model Context Protocol server that loads the curated dataset (`data/plants/`, `data/products/`, `data/playbooks/`) and exposes it to MCP clients (Claude Desktop, `mcp-cli`, custom clients) over stdio JSON-RPC.
 
 ## Tools exposed
 
-| Tool | Description |
-|---|---|
-| `get_plant` | Look up a single plant by `slug` or by `name` (common or scientific, case-insensitive). Returns the full validated plant record, or a structured `not_found` result with the 3 closest candidates. |
+| Tool | Intent | Description |
+|---|---|---|
+| `get_plant` | `lookup` | Look up a single plant by `slug` or by `name` (common or scientific, case-insensitive). Returns the full validated plant record, or a structured `not_found` result with the 3 closest candidates. No affiliate links. |
+| `get_playbook` | `playbook` | Fetch a curated how-to guide by `slug` (e.g. `"raised-bed-build"`) or by `topic` (natural-language, e.g. `"raised garden bed"`, `"fall garlic"`). Returns the playbook plus a curated bundle of recommended products with affiliate links. Disclosure is attached automatically (`_meta.sproutkit.has_affiliate_links: true` + tail content block). |
 
-More tools (`find_plants`, `companion_check`, `seasonal_calendar`, `get_playbook`) are in the [roadmap](../../ROADMAP.md).
+Example: asking Claude *"use sproutkit to give me a playbook on building a raised garden bed"* triggers `get_playbook({ topic: "raised garden bed" })`, which returns the build steps + cedar bed + drip kit recommendations with your configured affiliate tag substituted.
+
+More tools (`find_plants`, `companion_check`, `seasonal_calendar`) are in the [roadmap](../../ROADMAP.md).
 
 ## Run locally
 
