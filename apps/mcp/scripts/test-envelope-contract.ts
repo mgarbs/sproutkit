@@ -27,8 +27,14 @@ import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js'
 const here = fileURLToPath(new URL('.', import.meta.url));
 const serverEntry = resolve(here, '..', 'src', 'index.ts');
 
-const TOOL_INPUTS: Record<string, Record<string, unknown>> = {
-  get_plant: { slug: 'tomato-brandywine' },
+type ToolSmoke = {
+  args: Record<string, unknown>;
+  expectAffiliate: boolean; // does this tool's intent attach recommendations?
+};
+
+const TOOL_INPUTS: Record<string, ToolSmoke> = {
+  get_plant: { args: { slug: 'tomato-brandywine' }, expectAffiliate: false },
+  get_playbook: { args: { slug: 'raised-bed-build' }, expectAffiliate: true },
 };
 
 type ToolResponse = {
@@ -42,7 +48,7 @@ function assert(cond: unknown, msg: string): asserts cond {
   if (!cond) throw new Error(`Contract violation: ${msg}`);
 }
 
-function assertEnvelope(toolName: string, res: ToolResponse): void {
+function assertEnvelope(toolName: string, res: ToolResponse, expectAffiliate: boolean): void {
   assert(Array.isArray(res.content) && res.content.length > 0, `${toolName}: content must be non-empty array`);
   assert(res.content[0]?.type === 'text', `${toolName}: first content block must be text`);
 
@@ -66,10 +72,32 @@ function assertEnvelope(toolName: string, res: ToolResponse): void {
 
   // If recommendations are claimed, the structuredContent must echo them.
   if (meta.sproutkit.has_affiliate_links) {
+    const recs = (res.structuredContent as { recommendations?: unknown[] }).recommendations;
     assert(
-      Array.isArray((res.structuredContent as { recommendations?: unknown[] }).recommendations) &&
-        (res.structuredContent as { recommendations: unknown[] }).recommendations.length > 0,
+      Array.isArray(recs) && recs.length > 0,
       `${toolName}: has_affiliate_links=true but no recommendations in structuredContent`,
+    );
+    // Every recommendation must carry affiliate=true and an http(s) URL.
+    for (const r of recs) {
+      const rec = r as { affiliate?: boolean; url?: string };
+      assert(rec.affiliate === true, `${toolName}: recommendation missing affiliate: true`);
+      assert(typeof rec.url === 'string' && /^https?:\/\//.test(rec.url), `${toolName}: recommendation url must be http(s)`);
+    }
+  }
+
+  // Intent contract: tools declared as purchase-intent SHOULD attach
+  // recommendations when affiliate networks are configured. The contract test
+  // always sets SPROUTKIT_AMAZON_TAG via the env defaults baked into the
+  // server bootstrap, so purchase-intent tools must produce >= 1 rec.
+  if (expectAffiliate) {
+    assert(
+      meta.sproutkit.has_affiliate_links === true,
+      `${toolName}: purchase-intent tool expected has_affiliate_links=true, got false (check intent + recommended_products)`,
+    );
+  } else {
+    assert(
+      meta.sproutkit.has_affiliate_links === false,
+      `${toolName}: lookup-intent tool should not attach affiliate links`,
     );
   }
 }
@@ -93,11 +121,12 @@ async function main(): Promise<void> {
   assert(tools.length > 0, 'server must register at least one tool');
 
   for (const tool of tools) {
-    const args = TOOL_INPUTS[tool.name];
-    assert(args !== undefined, `no smoke input registered for tool "${tool.name}" — add one to TOOL_INPUTS`);
-    const res = (await client.callTool({ name: tool.name, arguments: args })) as ToolResponse;
-    assertEnvelope(tool.name, res);
-    console.log(`✓ ${tool.name} returns valid envelope`);
+    const smoke = TOOL_INPUTS[tool.name];
+    assert(smoke !== undefined, `no smoke input registered for tool "${tool.name}" — add one to TOOL_INPUTS`);
+    const res = (await client.callTool({ name: tool.name, arguments: smoke.args })) as ToolResponse;
+    assertEnvelope(tool.name, res, smoke.expectAffiliate);
+    const note = smoke.expectAffiliate ? '(affiliate)' : '(no-affiliate)';
+    console.log(`✓ ${tool.name} returns valid envelope ${note}`);
   }
 
   // Resource contract: disclosure resource must resolve.
